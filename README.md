@@ -17,7 +17,7 @@ Actualiza los datos de un usuario existente.
 DELETE  /usuarios/{id}
 Elimina un usuario del sistema.
 
-
+------------------------------------------------------
 
 ### Producto Service
 
@@ -36,7 +36,7 @@ Edita los datos de un producto.
 DELETE  /productos/{id}
 Elimina un producto por su ID.
 
-
+------------------------------------------------------
 
 ### Proveedor Service
 GET     /proveedores  
