@@ -4,16 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
 import com.proyectperfulandia.proyectoperfulandia.servicios.UsuarioServices;
@@ -29,42 +21,36 @@ public class UsuarioRestController {
         return usuarioServices.findByAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> verDetalle(@PathVariable Long id){
-        Optional<Usuarios> usuariosOptional = usuarioServices.findById(id);
-        if(usuariosOptional.isPresent()){
-            return ResponseEntity.ok(usuariosOptional.orElseThrow());
+    @GetMapping("/{rut}")
+    public ResponseEntity<?> verDetalle(@PathVariable String rut) {
+        Optional<Usuarios> usuariosOptional = usuarioServices.findById(rut);
+        if(usuariosOptional.isPresent()) {
+            return ResponseEntity.ok(usuariosOptional.get());
         }
-        return ResponseEntity.notFound().build();
-    }
-    @PostMapping
-    public ResponseEntity<Usuarios> crear(@RequestBody Usuarios unUsuarios){
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioServices.save(unUsuarios));
-    }
-    
-    @PutMapping("/{id_usuario}")
-    public ResponseEntity<?> modificarUsuarios(@PathVariable Long id_usuario, @RequestBody Usuarios unUsuarios) {
-        Optional <Usuarios> usuariosOptional = usuarioServices.findById(id_usuario);
-        if(usuariosOptional.isPresent()){
-            Usuarios usuariosExiste = usuariosOptional.get();
-            usuariosExiste.setNombre_usuario(unUsuarios.getNombre_usuario());
-            usuariosExiste.setApellido_usuario(unUsuarios.getApellido_usuario());
-            usuariosExiste.setCorreo_usuario(unUsuarios.getCorreo_usuario());
-            usuariosExiste.setEdad_usuario(unUsuarios.getEdad_usuario());
-            Usuarios usuarioModificado = usuarioServices.save(usuariosExiste);
-            return ResponseEntity.ok(usuarioModificado);
-        }
-        return ResponseEntity.notFound().build();
-    }
+    return ResponseEntity.notFound().build();
+}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarUsuario(@PathVariable Long id){
-        Usuarios unusuarios = new Usuarios();
-        unusuarios.setId_usuario(id);
-        Optional<Usuarios> usuariosOptional = usuarioServices.delete(unusuarios);
-        if(usuariosOptional.isPresent()){
-            return ResponseEntity.ok(usuariosOptional.orElseThrow());
-        }
+    @PutMapping("/{rut}")
+    public ResponseEntity<?> modificarUsuarios(@PathVariable String rut, @RequestBody Usuarios unUsuarios) {
+    Optional<Usuarios> usuariosOptional = usuarioServices.findById(rut);
+    if(usuariosOptional.isPresent()) {
+        Usuarios usuariosExiste = usuariosOptional.get();
+        usuariosExiste.setNombreUsuario(unUsuarios.getNombreUsuario());
+        usuariosExiste.setApellidoUsuario(unUsuarios.getApellidoUsuario());
+        usuariosExiste.setCorreoUsuario(unUsuarios.getCorreoUsuario());
+        usuariosExiste.setEdadUsuario(unUsuarios.getEdadUsuario());
+        Usuarios usuarioModificado = usuarioServices.save(usuariosExiste);
+        return ResponseEntity.ok(usuarioModificado);
+    }
+    return ResponseEntity.notFound().build();
+}
+
+    @DeleteMapping("/{rut}")
+    public ResponseEntity<?> eliminarUsuario(@PathVariable String rut) {
+        Optional<Usuarios> usuariosOptional = usuarioServices.delete(rut);
+        if(usuariosOptional.isPresent()) {
+        return ResponseEntity.ok(usuariosOptional.get());
+    }
         return ResponseEntity.notFound().build();
     }
 }

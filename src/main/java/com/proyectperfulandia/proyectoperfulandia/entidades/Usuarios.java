@@ -1,119 +1,85 @@
 package com.proyectperfulandia.proyectoperfulandia.entidades;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 @Entity
 public class Usuarios {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Long id_usuario;
-    private String nombre_usuario;
-    private String apellido_usuario;
-    private String correo_usuario;
-    private int edad_usuario;
-    private String RUT_usuario;
-    
-    public Usuarios() {
-    }
-    
-    public Usuarios(Long id_usuario, String nombre_usuario, String apellido_usuario, String correo_usuario,
-            int edad_usuario, String rUT_usuario) {
-        this.id_usuario = id_usuario;
-        this.nombre_usuario = nombre_usuario;
-        this.apellido_usuario = apellido_usuario;
-        this.correo_usuario = correo_usuario;
-        this.edad_usuario = edad_usuario;
-        RUT_usuario = rUT_usuario;
-    }
+    @Column(name = "rut_usuario") // nombre variable corregido
+    private String rutUsuario;
 
+    @Column(name = "nombre_usuario")
+    private String nombreUsuario;
 
+    @Column(name = "apellido_usuario")
+    private String apellidoUsuario;
 
-    public Long getId_usuario() {
-        return id_usuario;
-    }
+    @Column(name = "correo_usuario")
+    private String correoUsuario;
 
+    @Column(name = "edad_usuario")
+    private int edadUsuario;
 
+    public Usuarios() {}
 
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public Usuarios(String rutUsuario, String nombreUsuario, String apellidoUsuario,
+                    String correoUsuario, int edadUsuario) {
+        this.rutUsuario = rutUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.correoUsuario = correoUsuario;
+        this.edadUsuario = edadUsuario;
     }
 
+    // Getters y setters
 
-
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public String getRutUsuario() {
+        return rutUsuario;
     }
 
-
-
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setRutUsuario(String rutUsuario) {
+        this.rutUsuario = rutUsuario;
     }
 
-
-
-    public String getApellido_usuario() {
-        return apellido_usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-
-
-    public void setApellido_usuario(String apellido_usuario) {
-        this.apellido_usuario = apellido_usuario;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
-
-
-    public String getCorreo_usuario() {
-        return correo_usuario;
+    public String getApellidoUsuario() {
+        return apellidoUsuario;
     }
 
-
-
-    public void setCorreo_usuario(String correo_usuario) {
-        this.correo_usuario = correo_usuario;
+    public void setApellidoUsuario(String apellidoUsuario) {
+        this.apellidoUsuario = apellidoUsuario;
     }
 
-
-
-    public int getEdad_usuario() {
-        return edad_usuario;
+    public String getCorreoUsuario() {
+        return correoUsuario;
     }
 
-
-
-    public void setEdad_usuario(int edad_usuario) {
-        this.edad_usuario = edad_usuario;
+    public void setCorreoUsuario(String correoUsuario) {
+        this.correoUsuario = correoUsuario;
     }
 
-
-
-    public String getRUT_usuario() {
-        return RUT_usuario;
+    public int getEdadUsuario() {
+        return edadUsuario;
     }
 
-
-
-    public void setRUT_usuario(String rUT_usuario) {
-        RUT_usuario = rUT_usuario;
+    public void setEdadUsuario(int edadUsuario) {
+        this.edadUsuario = edadUsuario;
     }
-
-
 
     @Override
     public String toString() {
-        return "Usuarios [id_usuario=" + id_usuario + ", nombre_usuario=" + nombre_usuario + ", apellido_usuario="
-                + apellido_usuario + ", correo_usuario=" + correo_usuario + ", edad_usuario=" + edad_usuario
-                + ", RUT_usuario=" + RUT_usuario + "]";
+        return "Usuarios [rutUsuario=" + rutUsuario + ", nombreUsuario=" + nombreUsuario +
+               ", apellidoUsuario=" + apellidoUsuario + ", correoUsuario=" + correoUsuario +
+               ", edadUsuario=" + edadUsuario + "]";
     }
-
-
-
-
-
-    
 }

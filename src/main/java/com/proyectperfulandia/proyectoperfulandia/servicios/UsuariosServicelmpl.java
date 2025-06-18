@@ -11,7 +11,7 @@ import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
 import com.proyectperfulandia.proyectoperfulandia.repositorios.UsuarioRepository;
 
 @Service
-public class UsuariosServicelmpl implements UsuarioServices{
+public class UsuariosServicelmpl implements UsuarioServices {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -24,9 +24,8 @@ public class UsuariosServicelmpl implements UsuarioServices{
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Usuarios> findById(Long id) {
-        Optional<Usuarios> usuariosOptional = usuarioRepository.findById(id);
-        return usuariosOptional;
+    public Optional<Usuarios> findById(String RUT_usuario) {
+        return usuarioRepository.findById(RUT_usuario);
     }
 
     @Override
@@ -35,11 +34,9 @@ public class UsuariosServicelmpl implements UsuarioServices{
     }
 
     @Override
-    public Optional<Usuarios> delete(Usuarios unUsuarios) {
-        Optional<Usuarios> usuariosOptional = usuarioRepository.findById(unUsuarios.getId_usuario());
-        usuariosOptional.ifPresent(usuarioDb ->{
-            usuarioRepository.delete(unUsuarios);
-        });
+    public Optional<Usuarios> delete(String rut) {
+        Optional<Usuarios> usuariosOptional = usuarioRepository.findById(rut);
+        usuariosOptional.ifPresent(usuarioRepository::delete);
         return usuariosOptional;
     }
 }

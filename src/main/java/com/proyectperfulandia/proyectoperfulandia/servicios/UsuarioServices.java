@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
 
-
 public interface UsuarioServices {
     List<Usuarios> findByAll();
 
-    Optional<Usuarios> findById(Long id);
+    Optional<Usuarios> findById(String rut);
 
     Usuarios save(Usuarios unUsuarios);
-    
-    Optional<Usuarios> delete(Usuarios unUsuarios);
+
+    Optional<Usuarios> delete(String rut); // IMPORTANTE corregido, en vez de usar un objeto completo innecesariamente solo se necesita el rut, es mejor (también está corregido en impl)
 }
+
