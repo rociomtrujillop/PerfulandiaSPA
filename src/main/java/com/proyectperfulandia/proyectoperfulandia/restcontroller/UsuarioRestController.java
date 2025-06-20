@@ -45,6 +45,12 @@ public class UsuarioRestController {
     return ResponseEntity.notFound().build();
 }
 
+    @PostMapping
+    public ResponseEntity<Usuarios> crear(@RequestBody Usuarios unUsuarios) {
+        Usuarios nuevoUsuario = usuarioServices.save(unUsuarios);
+        return ResponseEntity.ok(nuevoUsuario);
+    }
+
     @DeleteMapping("/{rut}")
     public ResponseEntity<?> eliminarUsuario(@PathVariable String rut) {
         Optional<Usuarios> usuariosOptional = usuarioServices.delete(rut);

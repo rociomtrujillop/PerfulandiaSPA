@@ -34,8 +34,6 @@ public class Usuarios {
         this.edadUsuario = edadUsuario;
     }
 
-    // Getters y setters
-
     public String getRutUsuario() {
         return rutUsuario;
     }
