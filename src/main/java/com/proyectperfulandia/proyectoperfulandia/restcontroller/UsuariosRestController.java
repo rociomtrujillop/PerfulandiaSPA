@@ -8,13 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
-import com.proyectperfulandia.proyectoperfulandia.servicios.UsuarioServices;
+import com.proyectperfulandia.proyectoperfulandia.servicios.UsuariosServices;
 
 @RestController
 @RequestMapping("api/usuarios")
-public class UsuarioRestController {
+public class UsuariosRestController {
     @Autowired
-    private UsuarioServices usuarioServices;
+    private UsuariosServices usuarioServices;
 
     @GetMapping
     public List<Usuarios> listar(){

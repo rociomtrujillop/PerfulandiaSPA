@@ -9,23 +9,23 @@
 </head>
 <body class="container">
     <br>
-    <h2>Lista Provedores</h2><br>
+    <h2>Lista Proveedores</h2><br>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id Provedor</th>
-                <th>Nombre Provedor</th>
-                <th>Ubicacion Provedor</th>
-                <th>Productos Provedor</th>
+                <th>ID Proveedor</th>
+                <th>Nombre Proveedor</th>
+                <th>Ubicacion Proveedor</th>
+                <th>Productos Proveedor</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="unProvedor:${provedores}">
-                <td th:text="${unProvedor.id}"></td>
-                <td th:text="${unProvedor.nombreProvedor}"></td>
-                <td th:text="${unProvedor.ubicacionProvedor}"></td>
-                <td th:text="${unProvedor.productoProvedor}"></td>
+            <tr th:each="unProveedor:${proveedores}">
+                <td th:text="${unProveedor.id}"></td>
+                <td th:text="${unProveedor.nombreProvedor}"></td>
+                <td th:text="${unProveedor.ubicacionProvedor}"></td>
+                <td th:text="${unProveedor.productoProvedor}"></td>
             </tr>
         </tbody>
     </table>

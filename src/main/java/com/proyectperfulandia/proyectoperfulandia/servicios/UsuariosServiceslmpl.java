@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
-import com.proyectperfulandia.proyectoperfulandia.repositorios.UsuarioRepository;
+import com.proyectperfulandia.proyectoperfulandia.repositorios.UsuariosRepository;
 
 @Service
-public class UsuariosServicelmpl implements UsuarioServices {
+public class UsuariosServiceslmpl implements UsuariosServices {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuariosRepository usuarioRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -24,13 +24,13 @@ public class UsuariosServicelmpl implements UsuarioServices {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Usuarios> findById(String RUT_usuario) {
-        return usuarioRepository.findById(RUT_usuario);
+    public Optional<Usuarios> findById(String rutUsuario) {
+        return usuarioRepository.findById(rutUsuario);
     }
 
     @Override
-    public Usuarios save(Usuarios unUsuarios) {
-        return usuarioRepository.save(unUsuarios);
+    public Usuarios save(Usuarios unUsuario) {
+        return usuarioRepository.save(unUsuario);
     }
 
     @Override

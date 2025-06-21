@@ -8,14 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Productos;
-import com.proyectperfulandia.proyectoperfulandia.repositorios.ProductoRepository;
+import com.proyectperfulandia.proyectoperfulandia.repositorios.ProductosRepository;
 
 
 @Controller
-public class ProductoController {
+public class ProductosController {
 
     @Autowired
-    private ProductoRepository productoRepository;
+    private ProductosRepository productoRepository;
 
     @GetMapping("/productos")
     public String productos(Model model){

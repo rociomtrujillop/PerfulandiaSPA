@@ -20,7 +20,7 @@ import com.proyectperfulandia.proyectoperfulandia.servicios.ProductosServices;
 
 @RestController
 @RequestMapping("api/productos")
-public class ProductoRestController {
+public class ProductosRestController {
     @Autowired
     private ProductosServices productosServices;
     

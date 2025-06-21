@@ -11,7 +11,7 @@ public interface ProductosServices {
 
     Optional<Productos> findById(Long id);
 
-    Productos save(Productos unProductos);
+    Productos save(Productos unProducto);
     
-    Optional<Productos> delete(Productos unProductos);
+    Optional<Productos> delete(Productos unProducto);
 }

@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Productos;
-import com.proyectperfulandia.proyectoperfulandia.repositorios.ProductoRepository;
+import com.proyectperfulandia.proyectoperfulandia.repositorios.ProductosRepository;
 
 @Service
-public class ProductoServicelmpl implements ProductosServices{
+public class ProductosServiceslmpl implements ProductosServices{
 
     @Autowired
-    private ProductoRepository productoRepository;
+    private ProductosRepository productoRepository;
     @Override
     @Transactional(readOnly = true)
     public List<Productos> findByAll() {
@@ -29,15 +29,15 @@ public class ProductoServicelmpl implements ProductosServices{
     }
 
     @Override
-    public Productos save(Productos unProductos) {
-        return productoRepository.save(unProductos);
+    public Productos save(Productos unProducto) {
+        return productoRepository.save(unProducto);
     }
 
     @Override
-    public Optional<Productos> delete(Productos unProductos) {
-        Optional<Productos> productosOptional = productoRepository.findById(unProductos.getId_producto());
+    public Optional<Productos> delete(Productos unProducto) {
+        Optional<Productos> productosOptional = productoRepository.findById(unProducto.getId_producto());
         productosOptional.ifPresent(productoDb ->{
-            productoRepository.delete(unProductos);
+            productoRepository.delete(unProducto);
         });
         return productosOptional;
     }

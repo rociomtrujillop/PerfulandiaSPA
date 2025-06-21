@@ -8,13 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
-import com.proyectperfulandia.proyectoperfulandia.repositorios.UsuarioRepository;
+import com.proyectperfulandia.proyectoperfulandia.repositorios.UsuariosRepository;
 
 @Controller
-public class UsuarioController {
+public class UsuariosController {
     
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuariosRepository usuarioRepository;
 
     @GetMapping("/usuarios")
     public String usuarios(Model model){

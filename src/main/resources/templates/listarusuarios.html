@@ -14,7 +14,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id Usuario</th>
+                <th>Rut Usuario</th>
                 <th>Nombre Usuario</th>
                 <th>Apellido Usuario</th>
                 <th>Correo Usuario</th>
@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             <tr th:each="unUsuario:${usuarios}">
-                <td th:text="${unUsuario.id}"></td>
+                <td th:text="${unUsuario.rut}"></td>
                 <td th:text="${unUsuario.nombre}"></td>
                 <td th:text="${unUsuario.apellido}"></td>
                 <td th:text="${unUsuario.correo}"></td>
