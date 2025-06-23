@@ -30,7 +30,7 @@ public class ProveedoresServiceslmpl implements ProveedoresServices{
 
     @Override
     public Proveedores save(Proveedores unProveedores){
-        return proveedoresRepository.save(unProveedores);
+        return proveedoresRepository.save(unProveedores); // el problema puede estar en la diferencia de variables
     }
 
     @Override
