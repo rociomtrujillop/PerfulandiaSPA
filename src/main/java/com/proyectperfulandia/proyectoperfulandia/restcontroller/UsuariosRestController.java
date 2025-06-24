@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import com.proyectperfulandia.proyectoperfulandia.entidades.Usuarios;
 import com.proyectperfulandia.proyectoperfulandia.servicios.UsuariosServices;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("api/usuarios")
 public class UsuariosRestController {
