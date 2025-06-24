@@ -52,7 +52,7 @@ public class UsuariosRestControllerTest {
         Usuarios unUsuario = new Usuarios("21837064-0", "Rocío", "Trujillo", "rociotp@gmail.com", 20);
         try{
             when(usuariosService.findById("21837064-0")).thenReturn(Optional.of(unUsuario));
-            mockMvc.perform(get("/api/usuarios/1")
+            mockMvc.perform(get("/api/usuarios/21837064-0")
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
         }
