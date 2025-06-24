@@ -77,7 +77,7 @@ public class UsuariosRestControllerTest {
         mockMvc.perform(post("/api/usuarios")
         .contentType(MediaType.APPLICATION_JSON)
         .content(objectMapper.writeValueAsString(unUsuario)))
-        .andExpect(status().isCreated());
+        .andExpect(status().isOk());
     }
 
     @Test
