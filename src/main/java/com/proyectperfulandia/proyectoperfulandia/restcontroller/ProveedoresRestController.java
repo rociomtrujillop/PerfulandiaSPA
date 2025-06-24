@@ -32,11 +32,21 @@ public class ProveedoresRestController {
      @Autowired
     private ProveedoresServices proveedoresServices;
 
+    @Operation(summary = "Obtener la lista de proveedores", description = "Devuelve los proveedores en la lista")
+    @ApiResponse(responseCode = "200", description = "Lista de proveedores obtenida correctamente", 
+                 content = @Content(mediaType = "application/json",
+                 schema = @Schema(implementation = Proveedores.class)))
     @GetMapping
     public List<Proveedores> listar(){
         return proveedoresServices.findByAll();
     }
 
+    @Operation(summary = "Obtener Proveedor por ID", description = "Obtiene el detalle de un proveedor especifico")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Proveedor encontrado",
+                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Proveedores.class))),
+        @ApiResponse(responseCode = "404", description = "Proveedor no encontrado")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<?> verDetalle(@PathVariable Long id){
         Optional<Proveedores> proveedoresOptional = proveedoresServices.findById(id);
@@ -46,11 +56,20 @@ public class ProveedoresRestController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Crea un Proveedor nuevo", description = "Crea un proveedor con los datos entregados")
+    @ApiResponse(responseCode = "201", description = "proveedor creado correctamente",
+                 content = @Content(mediaType = "application/json", schema = @Schema(implementation = Proveedores.class)))
     @PostMapping
     public ResponseEntity<Proveedores> crear(@RequestBody Proveedores unProveedores){
         return ResponseEntity.status(HttpStatus.CREATED).body(proveedoresServices.save(unProveedores));
     }
 
+    @Operation(summary = "Actualiza un proveedor existente", description = "Actualiza los datos de un proveedor existente")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "proveedor actualizado correctamente",
+                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Proveedores.class))),
+    @ApiResponse(responseCode = "404", description = "proveedor no encontrado", content = @Content)
+    })
     @PutMapping("/{id}")
     public ResponseEntity<?> modificarProvedor(@PathVariable Long id, @RequestBody Proveedores unProveedores){
         Optional <Proveedores> proveedoresOptional = proveedoresServices.findById(id);
@@ -65,6 +84,14 @@ public class ProveedoresRestController {
         return ResponseEntity.notFound().build();
     }
 
+
+    @Operation(summary = "Eliminar un proveedor", description = "Elimina un proveedor según su ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Proveedor eliminado correctamente",
+                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Proveedores.class))),
+        @ApiResponse(responseCode = "404",
+                     description = "Proveedor no encontrado", content = @Content)
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminiarProveedor(@PathVariable Long id){
         Proveedores unProveedor = new Proveedores();
